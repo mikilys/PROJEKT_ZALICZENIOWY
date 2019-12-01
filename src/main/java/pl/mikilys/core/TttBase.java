@@ -1,14 +1,16 @@
 package pl.mikilys.core;
 
-public class TTT {
+public class TttBase {
 
-    private char[][] board;
-    private char currentPlayerMark;
+    private char[][] board, boardNew;
+    public char currentPlayerMark;
 
-    public TTT() {
+    public TttBase() {
 
         board = new char[3][3];
+        boardNew = new char[3][3];
         currentPlayerMark = 'x';
+
         initializeBoard();
 
     };
@@ -46,6 +48,22 @@ public class TTT {
 
     }
 
+    //temporary helpful board
+    public void printBoardNew() {
+
+        System.out.println("-------------");
+
+        for (int i = 0; i < 3; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < 3; j++) {
+                System.out.print(boardNew[i][j] + " | ");
+            }
+            System.out.println();
+            System.out.println("-------------");
+        }
+
+    }
+
     public boolean isBoardFull() {
 
         boolean isFull = true;
@@ -60,6 +78,7 @@ public class TTT {
 
     }
 
+    //Base TTT!
     public boolean checkForWin() {
 
         boolean winner = false;
@@ -142,5 +161,86 @@ public class TTT {
 
     }
 
+    //Let's the fun begin!
+    public char finalCounter() {
+
+        char mark = '-';
+        int x = 0;
+        int o = 0;
+
+        arrayCopy();
+        checkRowsForChange();
+        checkColumnsForChange();
+        checkDiagonalsForChange();
+
+        if (isBoardFull() == true) {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (boardNew[i][j] == 'x') {
+                        x++;
+                    } else {
+                        o++;
+                    }
+                }
+            }
+            if (x > o) {
+                mark = 'x';
+            } else {
+                mark = 'o';
+            }
+        }
+
+        return mark;
+
+    }
+
+    public char[][] checkRowsForChange() {
+
+        for (int i = 0; i < 3; i++) {
+            if (board[0][i] == board[2][i]) {
+                boardNew[1][i] = board[0][i];
+            }
+        }
+        return boardNew;
+
+    }
+
+    private char[][] checkColumnsForChange() {
+
+        for (int i = 0; i < 3; i++) {
+            if (board[i][0] == board[i][2]) {
+                boardNew[i][1] = board[i][0];
+            }
+        }
+        return boardNew;
+
+    }
+
+    private char[][] checkDiagonalsForChange() {
+
+        if (checkRowColForMatch(board[0][0], board[1][1], board[2][2]) == true) {
+            boardNew[1][1] = board[0][0];
+        } else if (checkRowColForMatch(board[0][2], board[1][1], board[2][0]) == true) {
+            boardNew[1][1] = board[0][2];
+        }
+        return boardNew;
+
+    }
+
+    public void arrayCopy() {
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                boardNew[i][j] = board[i][j];
+            }
+        }
+
+    }
+
+    private boolean checkRowColForMatch(char c1, char c2, char c3) {
+
+        return ((c1 != '-') && (c1 == c2) && (c2 == c3));
+
+    }
 
 }

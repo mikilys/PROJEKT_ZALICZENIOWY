@@ -7,8 +7,11 @@ public class RunTheGame {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        TTT game = new TTT();
+
+        TttBase game = new TttBase();
+
         game.initializeBoard();
+
         System.out.println("Core game in console!");
 
 
@@ -33,8 +36,12 @@ public class RunTheGame {
         }
 
         while (!game.checkForWin() && !game.isBoardFull());
+
         if (game.isBoardFull() && !game.checkForWin()) {
-            System.out.println("Nobody wins...");
+            char winner = game.finalCounter();
+            game.printBoard();
+            game.printBoardNew();
+            System.out.println(Character.toUpperCase(winner) + " wins!");
         } else {
             System.out.println("And the board looks like: ");
             game.printBoard();
