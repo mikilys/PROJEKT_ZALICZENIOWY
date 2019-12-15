@@ -8,6 +8,7 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -16,9 +17,9 @@ import javax.persistence.EntityManagerFactory;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "pl.coderslab")
+@ComponentScan(basePackages = "pl.mikilys")
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "pl.coderslab.repositoriesDAO")
+@EnableJpaRepositories(basePackages = "pl.mikilys.repositories")
 public class AppConfig implements WebMvcConfigurer {
 
     @Bean
@@ -42,4 +43,11 @@ public class AppConfig implements WebMvcConfigurer {
         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
+
+    @Override
+    public void configureDefaultServletHandling(
+            DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
+
 }

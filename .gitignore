@@ -138,3 +138,6 @@ local.properties
 .cache-main
 .scala_dependencies
 .worksheet
+
+# Other
+.archive
