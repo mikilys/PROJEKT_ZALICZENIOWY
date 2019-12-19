@@ -18,7 +18,7 @@ public class TttMove {
     private int x;
     private int y;
     @ManyToOne
-    @JoinColumn(name="game Id", referencedColumnName="id")
+    @JoinColumn(name="gameId", referencedColumnName="id")
     private TttBase game;
 
     public TttMove() {
