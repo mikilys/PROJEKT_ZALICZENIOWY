@@ -1,29 +1,31 @@
-package pl.mikilys.repositories;
+package pl.mikilys.entities;
 
 import lombok.Data;
 import pl.mikilys.entities.TttExtended;
 
 import javax.persistence.*;
+import java.util.List;
 
-//@Data
-//@Entity
+@Data
+@Entity
+@Table(name = "moves")
 public class TttMove {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private Long id;
-//
-//    @ManyToOne
-//    private TttExtended game;
-//
-//    private String player;
-//    private int row;
-//    private int col;
-//    private int mark;
-//
-//    public TttMove() {
-//
-//    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String player;
+    private int x;
+    private int y;
+    @ManyToOne
+    @JoinColumn(name="game Id", referencedColumnName="id")
+    private TttBase game;
+
+    public TttMove() {
+
+        TttBase game = new TttBase();
+
+    }
 
 
 

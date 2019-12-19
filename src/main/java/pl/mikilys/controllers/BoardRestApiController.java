@@ -1,11 +1,13 @@
 package pl.mikilys.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import pl.mikilys.entities.TttBase;
+import pl.mikilys.repositories.MoveRepository;
 
 @RestController
 @RequestMapping("/rest/game")
@@ -29,4 +31,17 @@ public class BoardRestApiController {
         return game;
 
     }
+
+    @Autowired
+    private final MoveRepository moveRepository;
+
+    public BoardRestApiController(MoveRepository moveRepository) {
+
+        this.moveRepository = moveRepository;
+//        List<TttMove> moves = moveRepository.findAllByGameId(id);
+
+    }
+
+
+
 }

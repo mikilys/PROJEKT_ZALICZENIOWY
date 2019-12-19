@@ -1,13 +1,5 @@
 package pl.mikilys.entities;
 
-import lombok.Data;
-import pl.mikilys.repositories.TttMove;
-import pl.mikilys.utilities.TttUtilities;
-
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-
 //@Data
 //@Entity
 public class TttExtended {
