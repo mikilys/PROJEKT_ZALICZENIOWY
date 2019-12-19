@@ -12,8 +12,6 @@ import java.util.List;
 
 public interface MoveRepository extends JpaRepository <TttMove, Long> {
 
-//    @Query("select m from TttMove m where m.gameId=:id")
-
     public List<TttMove> findAllByGameId(@Param("id") Long id);
 
 }

@@ -12,11 +12,20 @@
 <body>
 
 <H2>Witamy w grze!</H2>
+<br/>
+<hr/>
+<br/>
+
 <form method="post" action="/">
     X player name: <input type="text" name="Xplayer">
     O player name: <input type="text" name="Oplayer">
     <input type="submit" value="Rozpocznij grę!">
 </form>
+
+<br/>
+<hr/>
+<br/>
+<p align="right" ><font size="1">...by mikilys...</font></p>
 
 </body>
 </html>

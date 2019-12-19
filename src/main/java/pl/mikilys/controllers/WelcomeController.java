@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 import pl.mikilys.entities.TttBase;
 
+import java.util.Random;
+
 @Controller
 public class WelcomeController {
 
@@ -24,8 +26,11 @@ public class WelcomeController {
         game.setBoard();
         game.setXplayer(Xplayer);
         game.setOplayer(Oplayer);
-        int activePlayer = 0;
-        //add randomize
+
+        //random player start
+        Random whoStarts = new Random();
+        int activePlayer = whoStarts.nextInt(2);
+
         model.addAttribute("activePlayer", activePlayer);
         model.addAttribute("game", game);
         return "TheGame";

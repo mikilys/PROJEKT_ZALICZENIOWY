@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import pl.mikilys.entities.TttBase;
+import pl.mikilys.entities.TttMove;
 import pl.mikilys.repositories.MoveRepository;
 
 @RestController
@@ -14,7 +15,7 @@ import pl.mikilys.repositories.MoveRepository;
 public class BoardRestApiController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/{a}/{b}/{player}")
-    public TttBase setPlayer(@PathVariable("a") int a, @PathVariable("b") int b, @PathVariable("player") int player, TttBase game, Model model) {
+    public TttMove setPlayer(@PathVariable("a") int a, @PathVariable("b") int b, @PathVariable("player") int player, TttMove game, Model model) {
 
         int[][] actualBoard = game.getBoard();
         actualBoard[a][b] = player;
@@ -38,7 +39,6 @@ public class BoardRestApiController {
     public BoardRestApiController(MoveRepository moveRepository) {
 
         this.moveRepository = moveRepository;
-//        List<TttMove> moves = moveRepository.findAllByGameId(id);
 
     }
 

@@ -1,14 +1,11 @@
 package pl.mikilys.entities;
 
 import lombok.Data;
-import pl.mikilys.entities.TttExtended;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
-@Table(name = "moves")
 public class TttMove {
 
     @Id
@@ -24,6 +21,18 @@ public class TttMove {
     public TttMove() {
 
         TttBase game = new TttBase();
+
+    }
+
+    public void setBoard(int[][] board) {
+
+        game.setBoard(board);
+
+    }
+
+    public int[][] getBoard() {
+
+        return game.getBoard();
 
     }
 

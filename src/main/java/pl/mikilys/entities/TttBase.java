@@ -9,7 +9,6 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "base")
 @NoArgsConstructor
 public class TttBase {
 

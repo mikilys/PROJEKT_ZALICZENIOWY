@@ -1,5 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    var buttonParams = {
+        "playerId" : 1,
+        "mark" : "O",
+        "x" : 8,
+        "y" : 2
+    }
+
     let tempPlayer = document.querySelector("p#actPlayer");
     let player = tempPlayer.innerHTML;
 
