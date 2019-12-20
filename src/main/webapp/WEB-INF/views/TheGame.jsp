@@ -17,13 +17,16 @@
     <div class="row justify-content-start">
 
         <div class="col-4">
-            <h3>Active player: <c:if test="${activePlayer==1}">${game.xplayer}</c:if><c:if test="${activePlayer==0}">${game.oplayer}</c:if></h3>
+            <h3 id="playerName">Active player: <c:if test="${activePlayer==1}">${game.xplayer}</c:if><c:if test="${activePlayer==0}">${game.oplayer}</c:if></h3>
             <p id="actPlayer" style="visibility: hidden">${activePlayer}</p>
+            <p id="oPlayerName" style="visibility: hidden">${game.oplayer}</p>
+            <p id="xPlayerName" style="visibility: hidden">${game.xplayer}</p>
             <hr/>
             <br/>
         </div>
         <div class="col-4">
             <p style="visibility: hidden" id="gameId">${game.id}</p>
+            <h3 id="winnerPlayer" style="visibility: hidden">And the winner is: ${winnerPlayer}</h3>
         </div>
 
         <div class="row justify-content-center">

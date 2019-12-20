@@ -3,6 +3,7 @@ package pl.mikilys.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 import pl.mikilys.entities.TttBase;
 import pl.mikilys.entities.TttMove;
 import pl.mikilys.repositories.BaseRepository;
@@ -23,14 +24,13 @@ public class BoardRestApiController {
     private MoveRepository moveRepository;
 
     @RequestMapping(method = RequestMethod.GET, value = "/{x}/{y}/{player}/{gameId}")
-//    public TttBase runTheGame(@PathVariable("gameId") Long gameId,@RequestBody TttMove move, Model model) {
-    public TttBase runTheGame(@PathVariable("x") int x, @PathVariable("y") int y, @PathVariable("player") int player,
-                              @PathVariable("gameId") Long gameId, Model model) {
+    public String runTheGame(@PathVariable("x") int x, @PathVariable("y") int y, @PathVariable("player") int player,
+                                   @PathVariable("gameId") Long gameId, Model model) {
 
-        //getting base form db by id
-        TttBase game = baseRepository.findById(gameId);
+        //getting game id from base db
+        TttBase game = baseRepository.findOne(gameId);
 
-        //saving move to db
+        //saving move to db with game id from base db
         TttMove move = new TttMove();
         move.setGame(game);
         move.setX(x);
@@ -38,40 +38,48 @@ public class BoardRestApiController {
         move.setPlayer(player);
         move = moveRepository.save(move);
 
-        List<TttMove> moves  = moveRepository.findAllByGameId(gameId);
-
         //setting board
         int[][] actualBoard = game.getBoard();
+        actualBoard[x][y] = player;
         game.setActualBoard(actualBoard);
 
         //winner checking
+        int winnerPlayer;
         if (!isBoardFull(actualBoard)) {
-            checkForWin(actualBoard);
+            winnerPlayer = checkForWin(actualBoard);
         } else {
-            finalWinner(actualBoard);
+            winnerPlayer = finalWinner(actualBoard);
         }
 
-        //player change
-        player = move.getPlayer();
-        if (player == 1) {
-            player = 0;
+        //final score
+        if (winnerPlayer!=-1) {
+
+            model.addAttribute("winnerPlayer", winnerPlayer);
+
         } else {
-            player = 1;
+
+            //player change
+            int activePlayer;
+            if (player == 1) {
+                activePlayer = 0;
+            } else {
+                activePlayer = 1;
+            }
+
+            //setting atribute to paragraph in jsp
+            model.addAttribute("activePlayer", activePlayer);
         }
 
-        //setting atribute to paragraph in jsp
-        model.addAttribute("activePlayer", player);
         model.addAttribute("game", game);
-        return game;
+        return "TheGame";
 
     }
-
-    public BoardRestApiController(MoveRepository moveRepository) {
-
-        this.moveRepository = moveRepository;
-
-    }
-
+//
+//    public BoardRestApiController(MoveRepository moveRepository) {
+//
+//        this.moveRepository = moveRepository;
+//
+//    }
 
 
 }

@@ -19,7 +19,7 @@ public class TttBase {
     private int[][] board;
     private String Xplayer;
     private String Oplayer;
-    @OneToMany(mappedBy="game")
+    @OneToMany(mappedBy="game", fetch = FetchType.EAGER)
     List<TttMove> moves;
 
     public void setBoard() {
@@ -36,12 +36,13 @@ public class TttBase {
 
     public int[][] getBoard(){
 
+        int[][] tempBoard = new int[3][3];
         for (TttMove move : moves) {
 
-            board[move.getX()][move.getY()] = move.getPlayer();
+            tempBoard[move.getX()][move.getY()] = move.getPlayer();
 
         }
-        return board;
+        return tempBoard;
     }
 
 //    public TttBase changeBoard(int a, int b, int player) {

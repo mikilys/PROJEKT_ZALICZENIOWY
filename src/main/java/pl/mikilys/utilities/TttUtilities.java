@@ -17,18 +17,18 @@ public class TttUtilities {
 
     }
 
-    //board in 'zero'
-    public static void initializeBoard(int[][] board) {
-
-        //making rows
-        for (int i=0; i<3; i++) {
-            //making columns
-            for (int j=0; j<3; j++) {
-                board[i][j] = -1;
-            }
-        }
-
-    };
+//    //board in 'zero'
+//    public static void initializeBoard(int[][] board) {
+//
+//        //making rows
+//        for (int i=0; i<3; i++) {
+//            //making columns
+//            for (int j=0; j<3; j++) {
+//                board[i][j] = -1;
+//            }
+//        }
+//
+//    };
 
     //checking winner
     public static int checkForWin(int[][] board) {
