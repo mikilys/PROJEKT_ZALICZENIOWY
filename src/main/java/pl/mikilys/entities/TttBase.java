@@ -28,6 +28,22 @@ public class TttBase {
 
     }
 
+    public void setActualBoard(int[][] newBoard) {
+
+        this.board = newBoard;
+
+    }
+
+    public int[][] getBoard(){
+
+        for (TttMove move : moves) {
+
+            board[move.getX()][move.getY()] = move.getPlayer();
+
+        }
+        return board;
+    }
+
 //    public TttBase changeBoard(int a, int b, int player) {
 //
 //        this.board = board[a][b];

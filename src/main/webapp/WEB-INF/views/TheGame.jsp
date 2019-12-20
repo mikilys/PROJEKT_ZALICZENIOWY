@@ -23,7 +23,7 @@
             <br/>
         </div>
         <div class="col-4">
-            <%-- nic--%>
+            <p style="visibility: hidden" id="gameId">${game.id}</p>
         </div>
 
         <div class="row justify-content-center">
@@ -34,7 +34,7 @@
                         <th scope="col" colspan="3">Plansza gry!</th>
                     </tr>
                     <tr>
-                        <td><button id="00"> </button></td>
+                        <td><button data-x="0" data-y="0" id="00"> </button></td>
                         <td><button id="01"> </button></td>
                         <td><button id="02"> </button></td>
                     </tr>

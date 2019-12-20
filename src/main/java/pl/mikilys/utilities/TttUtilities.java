@@ -33,57 +33,57 @@ public class TttUtilities {
     //checking winner
     public static int checkForWin(int[][] board) {
 
-        int mark = -1;
+        int player = -1;
         if (TttUtilities.checkRowsForWin(board) > 0) {
             if (TttUtilities.checkColumnsForWin(board) > 0) {
                 if (TttUtilities.checkDiagonalsForWin(board) > 0) {
-                    mark = TttUtilities.checkDiagonalsForWin(board);
+                    player = TttUtilities.checkDiagonalsForWin(board);
                 }
             } else {
-                mark = TttUtilities.checkColumnsForWin(board);
+                player = TttUtilities.checkColumnsForWin(board);
             }
         } else {
-            mark = TttUtilities.checkRowsForWin(board);
+            player = TttUtilities.checkRowsForWin(board);
         }
 
-        return mark;
+        return player;
 
     }
 
     //three in row
     public static int checkRowsForWin(int[][] board) {
 
-        int mark = -1;
+        int player = -1;
         for (int i = 0; i < 3; i++) {
             if (checkRowCol(board[0][i], board[1][i], board[2][i])) {
-                mark = board[0][i];
+                player = board[0][i];
             }
         }
-        return mark;
+        return player;
 
     }
 
     //three in column
     public static int checkColumnsForWin(int[][] board) {
 
-        int mark = -1;
+        int player = -1;
         for (int i = 0; i < 3; i++) {
             if (checkRowCol(board[i][0], board[i][1], board[i][2])) {
-                mark = mark = board[i][0];
+                player = board[i][0];
             }
         }
-        return mark;
+        return player;
 
     }
 
     //three in corss
     public static int checkDiagonalsForWin(int[][] board) {
 
-        int mark = -1;
+        int player = -1;
         if (checkRowCol(board[0][0], board[1][1], board[2][2]) || checkRowCol(board[0][2], board[1][1], board[2][0])) {
-            mark = board[1][1];
+            player = board[1][1];
         }
-        return mark;
+        return player;
 
     }
 
@@ -147,7 +147,7 @@ public class TttUtilities {
     //counter after filling the board but with no winner
     public static int finalWinner(int[][] board) {
 
-        int mark = -1;
+        int player = -1;
         int x = 0;
         int o = 0;
 
@@ -168,13 +168,13 @@ public class TttUtilities {
                 }
             }
             if (x > o) {
-                mark = 1;
+                player = 1;
             } else {
-                mark = 0;
+                player = 0;
             }
         }
 
-        return mark;
+        return player;
 
     }
 
