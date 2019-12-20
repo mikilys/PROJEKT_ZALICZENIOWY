@@ -9,10 +9,10 @@ A simple web app to play Tic Tac Toe with little addition to the winner from Oth
 * If you don't win in classic way, 'count' yours colors and make sure that you 'close' as many opponents marks as possible, because they will be yours! Eg. if you are 'X' and on board you have sth. like this: '|X|O|X|', then 'O' becomes 'X'.
 
 ## Tech Stack:
-* Language: Java 11
-* Framework: Spring
-* UI Layer: JSP, Javascript, jQuery
-* Build Tool: InteliJ
+* Language: Java 11.
+* Framework: Spring.
+* Other tech: JSP, JavaScript, SLF4J.
+* Build Tool: InteliJ.
 
 ## Install & Run:
 * Install Java 11.

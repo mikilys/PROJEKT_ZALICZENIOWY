@@ -7,7 +7,7 @@
 
 <html>
 <head>
-    <title>Akatsuki!</title>
+    <title>Akatsuki, the Tic Othello Toe game!</title>
 
     <link href="${pageContext.request.contextPath}/styles/styles.css" rel="stylesheet" type="text/css">
 
@@ -26,7 +26,6 @@
         </div>
         <div class="col-4">
             <p style="visibility: hidden" id="gameId">${game.id}</p>
-            <h3 id="winnerPlayer" style="visibility: hidden">And the winner is: ${winnerPlayer}</h3>
         </div>
 
         <div class="row justify-content-center">

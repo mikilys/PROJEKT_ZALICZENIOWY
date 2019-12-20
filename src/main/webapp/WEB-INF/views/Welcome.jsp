@@ -7,15 +7,16 @@
 
 <html>
 <head>
-    <title>Welcome</title>
+    <title>Welcome to the game!</title>
 </head>
 <body>
 
-<H2>Witamy w grze!</H2>
+<H2>Welcome player!</H2>
 <br/>
 <hr/>
 <br/>
 
+<h2>Enter players names below</h2>
 <form method="post" action="/">
     X player name: <input type="text" name="Xplayer">
     O player name: <input type="text" name="Oplayer">

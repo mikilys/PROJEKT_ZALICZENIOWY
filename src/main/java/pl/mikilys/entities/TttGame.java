@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @Entity
 @NoArgsConstructor
-public class TttBase {
+public class TttGame {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
@@ -45,7 +45,7 @@ public class TttBase {
         return tempBoard;
     }
 
-//    public TttBase changeBoard(int a, int b, int player) {
+//    public TttGame changeBoard(int a, int b, int player) {
 //
 //        this.board = board[a][b];
 //

@@ -14,7 +14,7 @@ public class TttExtended {
 //    public int currentPlayerMark;
 //
 //    @OneToMany
-//    private List<TttBase> boardExt;
+//    private List<TttGame> boardExt;
 //
 //    private int partialWinner;
 //    private int winner;
@@ -28,7 +28,7 @@ public class TttExtended {
 //    public void init() {
 //        boardExt = new ArrayList<>();
 //        for (int i = 0 ; i<9 ; i++) {
-//            boardExt.add(new TttBase());
+//            boardExt.add(new TttGame());
 //        }
 //    }
 //

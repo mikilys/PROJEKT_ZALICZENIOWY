@@ -3,19 +3,20 @@ package pl.mikilys.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
-import pl.mikilys.entities.TttBase;
+import pl.mikilys.entities.TttGame;
 import pl.mikilys.entities.TttMove;
 import pl.mikilys.repositories.BaseRepository;
 import pl.mikilys.repositories.MoveRepository;
-
-import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static pl.mikilys.utilities.TttUtilities.*;
 
 @RestController
 @RequestMapping("/rest/game")
 public class BoardRestApiController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(WelcomeController.class);
 
     @Autowired
     private BaseRepository baseRepository;
@@ -28,7 +29,7 @@ public class BoardRestApiController {
                                    @PathVariable("gameId") Long gameId, Model model) {
 
         //getting game id from base db
-        TttBase game = baseRepository.findOne(gameId);
+        TttGame game = baseRepository.findOne(gameId);
 
         //saving move to db with game id from base db
         TttMove move = new TttMove();
@@ -37,11 +38,13 @@ public class BoardRestApiController {
         move.setY(y);
         move.setPlayer(player);
         move = moveRepository.save(move);
+        LOGGER.info("move: {}", move);
 
         //setting board
         int[][] actualBoard = game.getBoard();
         actualBoard[x][y] = player;
         game.setActualBoard(actualBoard);
+        LOGGER.info("actualBoard", actualBoard);
 
         //winner checking
         int winnerPlayer;
@@ -50,12 +53,13 @@ public class BoardRestApiController {
         } else {
             winnerPlayer = finalWinner(actualBoard);
         }
+        LOGGER.info("winnerPlayer: {}", winnerPlayer);
 
         //final score
-        if (winnerPlayer!=-1) {
-
-            model.addAttribute("winnerPlayer", winnerPlayer);
-
+        if (winnerPlayer==1) {
+            return "redirect:/winner/1";
+        } else if (winnerPlayer==0) {
+            return "redirect:/winner/0";
         } else {
 
             //player change
