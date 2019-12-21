@@ -48,17 +48,18 @@ public class BoardRestApiController {
 
         //winner checking
         int winnerPlayer;
-        if (!isBoardFull(actualBoard)) {
-            winnerPlayer = checkForWin(actualBoard);
-        } else {
+        if (isBoardFull(actualBoard)) {
+            LOGGER.info("isBoardFull", isBoardFull(actualBoard));
             winnerPlayer = finalWinner(actualBoard);
+        } else {
+            winnerPlayer = checkForWin(actualBoard);
         }
         LOGGER.info("winnerPlayer: {}", winnerPlayer);
 
         //final score
-        if (winnerPlayer==1) {
+        if (winnerPlayer!=0) {
             return "redirect:/winner/1";
-        } else if (winnerPlayer==0) {
+        } else if (winnerPlayer!=1) {
             return "redirect:/winner/0";
         } else {
 

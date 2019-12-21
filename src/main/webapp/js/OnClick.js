@@ -30,9 +30,9 @@ document.addEventListener("DOMContentLoaded", function () {
     findButton00.addEventListener('click',function() {
         let player = tempPlayer.innerHTML;
         $.get("/rest/game/0/0/"+player+"/"+gameId, function (data, status) {
-            findButton00.innerText=player;
-            // colourChange();
+            findButton00.innerText = player;
             switchPlayer();
+            findButton00.disabled = true;
         });
     });
 
@@ -40,9 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
     findButton01.addEventListener('click',function() {
         let player = tempPlayer.innerHTML;
         $.get("/rest/game/0/1/"+player+"/"+gameId, function (data, status) {
-            findButton01.innerText=player;
-            // colourChange();
+            findButton01.innerText = player;
             switchPlayer();
+            findButton01.disabled = true;
         })
     });
 
@@ -50,8 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
     findButton02.addEventListener('click',function() {
         let player = tempPlayer.innerHTML;
         $.get("/rest/game/0/2/"+player+"/"+gameId, function (data, status) {
-            findButton02.innerText=player;
+            findButton02.innerText = player;
             switchPlayer();
+            findButton02.disabled = true;
         })
     });
 
@@ -59,8 +60,9 @@ document.addEventListener("DOMContentLoaded", function () {
     findButton10.addEventListener('click',function() {
         let player = tempPlayer.innerHTML;
         $.get("/rest/game/1/0/"+player+"/"+gameId, function (data, status) {
-            findButton10.innerText=player;
+            findButton10.innerText = player;
             switchPlayer();
+            findButton10.disabled = true;
         })
     });
 
@@ -70,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
         $.get("/rest/game/1/1/" + player + "/" + gameId, function (data, status) {
             findButton11.innerText = player;
             switchPlayer();
-            // winner()
+            findButton11.disabled = true;
         })
     });
 
@@ -80,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
         $.get("/rest/game/1/2/" + player + "/" + gameId, function (data, status) {
             findButton12.innerText = player;
             switchPlayer();
+            findButton12.disabled = true;
         })
     });
 
@@ -89,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
         $.get("/rest/game/2/0/" + player + "/" + gameId, function (data, status) {
             findButton20.innerText = player;
             switchPlayer();
+            findButton20.disabled = true;
         })
     });
 
@@ -98,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
         $.get("/rest/game/2/1/" + player + "/" + gameId, function (data, status) {
             findButton21.innerText = player;
             switchPlayer();
+            findButton21.disabled = true;
         })
     });
 
@@ -107,6 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
         $.get("/rest/game/2/2/" + player + "/" + gameId, function (data, status) {
             findButton22.innerText = player;
             switchPlayer();
+            findButton22.disabled = true;
         })
     });
 
