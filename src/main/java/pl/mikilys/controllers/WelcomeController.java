@@ -56,6 +56,8 @@ public class WelcomeController {
         String oPlayer = game.getOplayer();
         String xPlayer = game.getXplayer();
 
+        LOGGER.info("winnerPlayer {}", winnerPlayer);
+
         if (winnerPlayer==0) {
             model.addAttribute("winnerPlayer", oPlayer);
         } else {
